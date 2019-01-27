@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using Managers.spawner;
 using UnityEngine;
-using Random = System.Random;
 
 public class EnemySpawnManager : MonoBehaviour
 {
@@ -86,7 +84,6 @@ public class EnemySpawnManager : MonoBehaviour
         if (nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
-            Debug.Log("Waves completed");
         }
         else
         {
