@@ -7,8 +7,7 @@ public abstract class AbstractBug : MonoBehaviour
     public float health;
     public float maxDistanceToTarget;
     public float speed;
-    public float angularSpeed = 10f;
-    
+
     public abstract bool isDead { get; }
 
     public IEnumerator TakeDamage(int damage)
