@@ -51,7 +51,6 @@ public abstract class AbstractBug : MonoBehaviour
             {
                 float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward) * Quaternion.Euler(0,0,-90);
-                Debug.Log(Vector3.forward);
             }
         }
     }
