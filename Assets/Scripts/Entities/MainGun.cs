@@ -20,7 +20,6 @@ public class MainGun : MonoBehaviour
             var gunPosition = gunShootPoint.transform.position;
             
             var muzzle = Instantiate(muzzleFlash);
-            muzzle.GetComponent<AbstractWeapon>().CollisionDecalPool = DecalPool;
             muzzle.transform.position = gunPosition;
             
             var light = Instantiate(muzzleLight);

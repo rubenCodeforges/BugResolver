@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 105915620}
   - component: {fileID: 105915619}
+  - component: {fileID: 105915621}
   m_Layer: 0
   m_Name: New Sprite
   m_TagString: Untagged
@@ -191,6 +192,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &105915621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105915618}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16000001, y: 0.16000001, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &159352591 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2910426738834623155, guid: 315a16dac32eb664baeaea5e1bbd2e22,
@@ -587,6 +601,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2910426738834623148, guid: 315a16dac32eb664baeaea5e1bbd2e22,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910426738834623148, guid: 315a16dac32eb664baeaea5e1bbd2e22,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910426738834623148, guid: 315a16dac32eb664baeaea5e1bbd2e22,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910426738834623148, guid: 315a16dac32eb664baeaea5e1bbd2e22,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[3]
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2910426738834623155, guid: 315a16dac32eb664baeaea5e1bbd2e22,
         type: 3}
       propertyPath: decalSizeMin
@@ -596,6 +630,11 @@ PrefabInstance:
         type: 3}
       propertyPath: decalSizeMax
       value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910426738834623155, guid: 315a16dac32eb664baeaea5e1bbd2e22,
+        type: 3}
+      propertyPath: maxDecals
+      value: 5000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 315a16dac32eb664baeaea5e1bbd2e22, type: 3}
@@ -686,6 +725,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.049
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462675398963649446, guid: d27ad19abcb9a1048bd36f98bedfb561,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 394059653
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462675398963649446, guid: d27ad19abcb9a1048bd36f98bedfb561,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d27ad19abcb9a1048bd36f98bedfb561, type: 3}

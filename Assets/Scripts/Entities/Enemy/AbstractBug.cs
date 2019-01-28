@@ -7,6 +7,7 @@ public abstract class AbstractBug : MonoBehaviour
     public float health;
     public float maxDistanceToTarget;
     public float speed;
+    public ParticleSystem deathParticles;
 
     public abstract bool isDead { get; }
 
@@ -15,8 +16,12 @@ public abstract class AbstractBug : MonoBehaviour
         health -= damage;
         if (isDead)
         {
+            var particleSystem = Instantiate(deathParticles);
+            particleSystem.transform.position = transform.position;
+            
             GetComponent<Animator>().SetTrigger("Die");
             GetComponent<Collider2D>().isTrigger = true;
+            GetComponent<SpriteRenderer>().sortingLayerName = "Middle_behind";
             yield return null;
         }
     }

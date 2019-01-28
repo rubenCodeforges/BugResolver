@@ -37,9 +37,6 @@ public class ParticleDecalPool : MonoBehaviour
         }
 
         particleData[particleDecalDataIndex].position = particleCollisionEvent.intersection;
-        Vector3 particleRotationEuler = Quaternion.LookRotation(particleCollisionEvent.normal).eulerAngles;
-        particleRotationEuler.z = Random.Range(0, 360);
-        particleData[particleDecalDataIndex].rotation = particleRotationEuler;
         particleData[particleDecalDataIndex].size = Random.Range(decalSizeMin, decalSizeMax);
         particleData[particleDecalDataIndex].color = colorGradient.Evaluate(Random.Range(0f, 1f));
 
