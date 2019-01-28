@@ -8,20 +8,32 @@ public abstract class AbstractBug : MonoBehaviour
     public float maxDistanceToTarget;
     public float speed;
     public ParticleSystem deathParticles;
-
+    public AudioClip[] HitAudioClips;
+    public AudioClip[] DeathAudioClips;
+    public float audioVolume = 1f;
+    
     public abstract bool isDead { get; }
 
     public IEnumerator TakeDamage(int damage)
     {
         health -= damage;
+        var position = transform.position;
+        var randHit = Random.Range(0, HitAudioClips.Length);
+
+        AudioSource.PlayClipAtPoint(HitAudioClips[randHit], position, audioVolume);
+
         if (isDead)
         {
             var particleSystem = Instantiate(deathParticles);
+            var randDeath = Random.Range(0, DeathAudioClips.Length);
+
             particleSystem.transform.position = transform.position;
-            
+            AudioSource.PlayClipAtPoint(DeathAudioClips[randDeath], position, audioVolume);
+
             GetComponent<Animator>().SetTrigger("Die");
             GetComponent<Collider2D>().isTrigger = true;
             GetComponent<SpriteRenderer>().sortingLayerName = "Middle_behind";
+            
             yield return null;
         }
     }

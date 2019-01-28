@@ -135,6 +135,12 @@ MonoBehaviour:
   speed: 1
   deathParticles: {fileID: 6902806978574808659, guid: 3f79bb3633b4a54488ff8b53db6114b1,
     type: 3}
+  HitAudioClips:
+  - {fileID: 8300000, guid: 598dbb6c2e5a22e47a64fcf786833202, type: 3}
+  DeathAudioClips:
+  - {fileID: 8300000, guid: a49e9ca980a5a584c83ec0a2c5620397, type: 3}
+  - {fileID: 8300000, guid: 06093d565c4883f40831df4c5a6be762, type: 3}
+  audioVolume: 2
   target: {fileID: 8462675399366376038, guid: d27ad19abcb9a1048bd36f98bedfb561, type: 3}
 --- !u!50 &8859755990383131346
 Rigidbody2D:
