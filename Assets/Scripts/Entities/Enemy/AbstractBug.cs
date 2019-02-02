@@ -15,7 +15,7 @@ public abstract class AbstractBug : MonoBehaviour
     public int damageRate = 15;
     
     public abstract bool isDead { get; }
-    private bool isTakingDamage = false;
+    private bool isDamaging;
     
     
     public IEnumerator TakeDamage(int damage)
@@ -75,9 +75,9 @@ public abstract class AbstractBug : MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward) * Quaternion.Euler(0,0,-90);
             }
         }
-        else if (distance <= maxDistanceToTarget && !isTakingDamage)
+        else if (distance <= maxDistanceToTarget && !isDamaging && !isDead)
         {
-            isTakingDamage = true;
+            isDamaging = true;
             StartCoroutine(applyDamage(FindObjectOfType<MainGun>()));
             
         }
@@ -87,6 +87,6 @@ public abstract class AbstractBug : MonoBehaviour
     {
         target.takeDamage(damage);
         yield return new WaitForSeconds(damageRate);
-        isTakingDamage = false;
+        isDamaging = false;
     }
 }
