@@ -10,6 +10,30 @@ public class MainGun : MonoBehaviour
     public GameObject muzzleLight;
     public ParticleDecalPool DecalPool;
     public GameObject gunShootPoint;
+
+    public int health = 10;
+    public int maxDamageAnimationClips = 3;
+    
+    private int damageAnimationCounter = 1;
+    
+    
+    public void takeDamage(int amount)
+    {
+        health -= amount;
+
+        if (damageAnimationCounter <= maxDamageAnimationClips)
+        {
+            var animator = transform.parent.GetComponent<Animator>();
+            animator.SetInteger("DamageCounter", damageAnimationCounter);
+            animator.Play("TurretHit");
+            damageAnimationCounter++;
+        }
+        
+        if (health <= 0)
+        {
+            Debug.Log("GameOver");
+        }
+    }
     
     // Update is called once per frame
     void Update()
@@ -23,7 +47,7 @@ public class MainGun : MonoBehaviour
             muzzle.transform.position = gunPosition;
             
             var light = Instantiate(muzzleLight);
-            light.transform.position = new Vector3(gunPosition.x, gunPosition.y, -0.3f);
+            light.transform.position = new Vector3(gunPosition.x, gunPosition.y, -1.3f);
 
         }
 
@@ -37,4 +61,6 @@ public class MainGun : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
+
+    
 }

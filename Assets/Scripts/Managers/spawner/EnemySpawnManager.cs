@@ -6,7 +6,8 @@ using UnityEngine;
 public class EnemySpawnManager : MonoBehaviour
 {
     public Transform originPoint;
-    public float circleRadius;
+    public float outerCircleRadius;
+    public float innerCircleRadius;
 
     public Wave[] waves;
     public float timeBetweenWaves = 5f;
@@ -95,13 +96,16 @@ public class EnemySpawnManager : MonoBehaviour
     void SpawnEnemy(AbstractBug enemy)
     {
         var spawned = Instantiate(enemy);
-        var position = UnityEngine.Random.insideUnitCircle * circleRadius;
+        var diff = outerCircleRadius - innerCircleRadius;
+ 
+        var position = UnityEngine.Random.insideUnitCircle * (outerCircleRadius + diff);
+        
         spawned.transform.position = originPoint.position + new Vector3(position.x, position.y);
 
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(originPoint.position, circleRadius);
+        Gizmos.DrawWireSphere(originPoint.position, outerCircleRadius);
     }
 }
