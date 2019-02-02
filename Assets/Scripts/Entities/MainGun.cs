@@ -13,6 +13,7 @@ public class MainGun : MonoBehaviour
 
     public int health = 10;
     public int maxDamageAnimationClips = 3;
+    public GameObject healthBar;
     
     private int damageAnimationCounter = 1;
     
@@ -26,6 +27,7 @@ public class MainGun : MonoBehaviour
             var animator = transform.parent.GetComponent<Animator>();
             animator.SetInteger("DamageCounter", damageAnimationCounter);
             animator.Play("TurretHit");
+            Destroy(healthBar.transform.GetChild(0).gameObject);
             damageAnimationCounter++;
         }
         
