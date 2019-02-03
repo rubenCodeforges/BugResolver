@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 8462675398963649444}
   - component: {fileID: 8462675398963649446}
   - component: {fileID: 8462675398963649445}
+  - component: {fileID: 1828053714}
   m_Layer: 0
   m_Name: Turret_Gun_64
   m_TagString: Untagged
@@ -124,12 +125,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 5
-  muzzleFlash: {fileID: 299828929628209967, guid: 06fd0bf98913a1541b3ab7aab1df95a5,
+  muzzleFlash: {fileID: 61, guid: 06fd0bf98913a1541b3ab7aab1df95a5, type: 3}
+  muzzleLight: {fileID: 4379885252120548419, guid: 25f57a485c8bde64d8d7b85a59f06a15,
     type: 3}
-  muzzleLight: {fileID: 0}
   DecalPool: {fileID: 0}
   gunShootPoint: {fileID: 529940793815855517}
-  health: 10
+  health: 3
+  maxDamageAnimationClips: 3
+  healthBar: {fileID: 0}
+  deathParticles: {fileID: 1077648896697570581, guid: e1de59cc0fb3e5340b73dfcb34f45068,
+    type: 3}
+--- !u!95 &1828053714
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462675398963649467}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71224cc17308c89459b22fb65d8fa134, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8462675399366376038
 GameObject:
   m_ObjectHideFlags: 0
