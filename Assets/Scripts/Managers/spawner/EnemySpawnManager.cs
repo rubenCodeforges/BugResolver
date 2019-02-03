@@ -66,7 +66,6 @@ public class EnemySpawnManager : MonoBehaviour
     private bool EnemyIsAlive()
     {
         isAliveInterval -= Time.deltaTime;
-        ;
         if (isAliveInterval <= 0f)
         {
             isAliveInterval = 1f;

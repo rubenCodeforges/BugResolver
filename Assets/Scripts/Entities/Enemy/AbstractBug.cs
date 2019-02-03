@@ -35,7 +35,7 @@ public abstract class AbstractBug : MonoBehaviour
             GetComponent<Animator>().SetTrigger("Die");
             GetComponent<Collider2D>().isTrigger = true;
             GetComponent<SpriteRenderer>().sortingLayerName = "Middle_behind";
-            
+            FindObjectOfType<GameManager>().AddScore(damage);
             yield return null;
         }
     }
@@ -67,7 +67,7 @@ public abstract class AbstractBug : MonoBehaviour
                     target.transform.position,
                     speed * Time.deltaTime
                 );
-                transform.position += new Vector3(0,0, -1.1f);
+                transform.position += new Vector3(0,0, -0.1f);
 
                 Vector3 moveDirection = target.transform.position - transform.position;
             
