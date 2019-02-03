@@ -42,7 +42,7 @@ public class MainGun : MonoBehaviour
         if (health <= 0)
         {
             StartCoroutine(Destroy());
-            Debug.Log("GameOver");
+            FindObjectOfType<GameManager>().GameOver();
         }
     }
     

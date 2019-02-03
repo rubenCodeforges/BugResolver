@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public GameObject healthBar;
     public GameObject healthIconPrefab;
     public GameObject scoreText;
+    public GameObject gameOverText;
+    public bool gameOver;
 
     private int score;
     
@@ -15,6 +17,12 @@ public class GameManager : MonoBehaviour
     {
         score += amount;
         scoreText.GetComponent<TextMeshProUGUI>().SetText("Score: " + score);
+    }
+
+    public void GameOver()
+    {
+        gameOverText.SetActive(true);
+        gameOver = true;
     }
     
     private void Start()

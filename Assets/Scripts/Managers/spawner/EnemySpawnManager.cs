@@ -24,28 +24,31 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (state == SpawnState.WAITING)
+        if (!FindObjectOfType<GameManager>().gameOver)
         {
-            if (!EnemyIsAlive())
+            if (state == SpawnState.WAITING)
             {
-                OnWaveComplete();
+                if (!EnemyIsAlive())
+                {
+                    OnWaveComplete();
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            if (waveCountdown <= 0)
+            {
+                if (state != SpawnState.SPAWNING)
+                {
+                    StartCoroutine(SpawnWave(waves[nextWave]));
+                }
             }
             else
             {
-                return;
+                waveCountdown -= Time.deltaTime;
             }
-        }
-
-        if (waveCountdown <= 0)
-        {
-            if (state != SpawnState.SPAWNING)
-            {
-                StartCoroutine(SpawnWave(waves[nextWave]));
-            }
-        }
-        else
-        {
-            waveCountdown -= Time.deltaTime;
         }
     }
 
@@ -87,20 +90,18 @@ public class EnemySpawnManager : MonoBehaviour
         }
         else
         {
-            nextWave++;            
+            nextWave++;
         }
-        
     }
 
     void SpawnEnemy(AbstractBug enemy)
     {
         var spawned = Instantiate(enemy);
         var diff = outerCircleRadius - innerCircleRadius;
- 
-        var position = UnityEngine.Random.insideUnitCircle * (outerCircleRadius + diff);
-        
-        spawned.transform.position = originPoint.position + new Vector3(position.x, position.y);
 
+        var position = UnityEngine.Random.insideUnitCircle * (outerCircleRadius + diff);
+
+        spawned.transform.position = originPoint.position + new Vector3(position.x, position.y);
     }
 
     private void OnDrawGizmos()
