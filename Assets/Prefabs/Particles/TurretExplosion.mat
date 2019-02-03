@@ -44,13 +44,13 @@ Material:
     - _Cutoff: 0.5
     - _DistortionBlend: 0.5
     - _DistortionEnabled: 0
-    - _DistortionStrength: 1
-    - _DistortionStrengthScaled: 0
-    - _DstBlend: 10
+    - _DistortionStrength: 0.26
+    - _DistortionStrengthScaled: 0.025999999
+    - _DstBlend: 1
     - _EmissionEnabled: 0
     - _FlipbookMode: 0
     - _LightingEnabled: 0
-    - _Mode: 2
+    - _Mode: 4
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0

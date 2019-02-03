@@ -12,11 +12,9 @@ public abstract class AbstractBug : MonoBehaviour
     public AudioClip[] DeathAudioClips;
     public float audioVolume = 1f;
     public int damage = 1;
-    public int damageRate = 15;
-    
+
     public abstract bool isDead { get; }
     private bool isDamaging;
-    
     
     public IEnumerator TakeDamage(int damage)
     {
@@ -58,28 +56,32 @@ public abstract class AbstractBug : MonoBehaviour
     protected void MoveToTarget(GameObject target)
     {
         var distance = Vector2.Distance(transform.position, target.transform.position);
-        if (distance > maxDistanceToTarget && !isDead)
-        {
-            
-            transform.position = Vector2.MoveTowards(
-                transform.position,
-                target.transform.position,
-                speed * Time.deltaTime
-            );
 
-            Vector3 moveDirection = target.transform.position - transform.position;
-            
-            if (moveDirection != Vector3.zero) 
-            {
-                float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward) * Quaternion.Euler(0,0,-90);
-            }
-        }
-        else if (distance <= maxDistanceToTarget && !isDamaging && !isDead)
+        if (!FindObjectOfType<MainGun>().isDead)
         {
-            isDamaging = true;
-            StartCoroutine(applyDamage(FindObjectOfType<MainGun>()));
+            if (distance > maxDistanceToTarget && !isDead)
+            {
             
+                transform.position = Vector2.MoveTowards(
+                    transform.position,
+                    target.transform.position,
+                    speed * Time.deltaTime
+                );
+                transform.position += new Vector3(0,0, -1.1f);
+
+                Vector3 moveDirection = target.transform.position - transform.position;
+            
+                if (moveDirection != Vector3.zero) 
+                {
+                    float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward) * Quaternion.Euler(0,0,-90);
+                }
+            }
+            else if (distance <= maxDistanceToTarget && !isDamaging && !isDead)
+            {
+                isDamaging = true;
+                StartCoroutine(applyDamage(FindObjectOfType<MainGun>()));
+            }
         }
     }
     
