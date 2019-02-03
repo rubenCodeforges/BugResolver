@@ -1,1 +1,2 @@
 Turret_Base_64_Hit.png,64,64,4
+Bug_suicide_1.png,32,32,7

@@ -85,8 +85,12 @@ public abstract class AbstractBug : MonoBehaviour
     
     protected IEnumerator applyDamage(MainGun target)
     {
+        var animator = GetComponent<Animator>();
+        animator.SetTrigger("Suicide");
+        
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         target.takeDamage(damage);
-        yield return new WaitForSeconds(damageRate);
+        StartCoroutine(TakeDamage((int) health)); 
         isDamaging = false;
     }
 }
