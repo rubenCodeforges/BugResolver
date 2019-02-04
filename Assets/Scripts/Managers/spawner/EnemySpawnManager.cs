@@ -11,7 +11,8 @@ public class EnemySpawnManager : MonoBehaviour
 
     public Wave[] waves;
     public float timeBetweenWaves = 5f;
-
+    public GameManager GameManager;
+    
     private int nextWave = 0;
     private float waveCountdown;
     private SpawnState state = SpawnState.COUNTING;
@@ -24,7 +25,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (!FindObjectOfType<GameManager>().gameOver)
+        if (!GameManager.gameOver)
         {
             if (state == SpawnState.WAITING)
             {
@@ -97,10 +98,9 @@ public class EnemySpawnManager : MonoBehaviour
     void SpawnEnemy(AbstractBug enemy)
     {
         var spawned = Instantiate(enemy);
-        var diff = outerCircleRadius - innerCircleRadius;
-
         var position = UnityEngine.Random.insideUnitCircle * outerCircleRadius;
         var origin = (Vector2) originPoint.position;
+        
         if (Vector2.Distance(position, origin) < innerCircleRadius)
         {
             position = new Vector2(position.x + innerCircleRadius, position.y + innerCircleRadius);
@@ -110,8 +110,6 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        var diff = outerCircleRadius - innerCircleRadius;
         Gizmos.DrawWireSphere(originPoint.position, outerCircleRadius);
-        Gizmos.DrawWireSphere(originPoint.position, innerCircleRadius);
     }
 }
