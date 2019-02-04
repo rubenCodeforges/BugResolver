@@ -6,7 +6,9 @@ public class ParticleDecalPool : MonoBehaviour
     public int maxDecals = 100;
     public float decalSizeMin = .5f;
     public float decalSizeMax = 1.5f;
-
+    public Color particlesStartColor;
+    public ParticleSystem ps;
+    
     private ParticleSystem decalParticleSystem;
     private int particleDecalDataIndex;
     private ParticleDecalData[] particleData;
@@ -15,12 +17,7 @@ public class ParticleDecalPool : MonoBehaviour
     void Start()
     {
         decalParticleSystem = GetComponent<ParticleSystem>();
-        particles = new ParticleSystem.Particle[maxDecals];
-        particleData = new ParticleDecalData[maxDecals];
-        for (int i = 0; i < maxDecals; i++)
-        {
-            particleData[i] = new ParticleDecalData();
-        }
+        InitParticles();
     }
 
     public void ParticleHit(ParticleCollisionEvent particleCollisionEvent, Gradient colorGradient)
@@ -48,11 +45,21 @@ public class ParticleDecalPool : MonoBehaviour
         for (int i = 0; i < particleData.Length; i++)
         {
             particles[i].position = particleData[i].position;
-//            particles[i].rotation3D = particleData[i].rotation;
-            particles[i].startSize = particleData[i].size;
-            particles[i].startColor = particleData[i].color;
         }
 
         decalParticleSystem.SetParticles(particles, particles.Length);
+    }
+    
+    private void InitParticles()
+    {
+        particles = new ParticleSystem.Particle[maxDecals];
+        particleData = new ParticleDecalData[maxDecals];
+
+        for (int i = 0; i < maxDecals; i++)
+        {
+            particleData[i] = new ParticleDecalData();
+            particles[i].startColor = particlesStartColor;
+            particles[i].startSize = decalSizeMin;
+        }
     }
 }

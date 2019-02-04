@@ -12,7 +12,12 @@ public class GameManager : MonoBehaviour
     public bool gameOver;
 
     private int score;
-    
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     public void AddScore(int amount)
     {
         score += amount;

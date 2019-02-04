@@ -99,13 +99,19 @@ public class EnemySpawnManager : MonoBehaviour
         var spawned = Instantiate(enemy);
         var diff = outerCircleRadius - innerCircleRadius;
 
-        var position = UnityEngine.Random.insideUnitCircle * (outerCircleRadius + diff);
-
+        var position = UnityEngine.Random.insideUnitCircle * outerCircleRadius;
+        var origin = (Vector2) originPoint.position;
+        if (Vector2.Distance(position, origin) < innerCircleRadius)
+        {
+            position = new Vector2(position.x + innerCircleRadius, position.y + innerCircleRadius);
+        }
         spawned.transform.position = originPoint.position + new Vector3(position.x, position.y);
     }
 
     private void OnDrawGizmos()
     {
+        var diff = outerCircleRadius - innerCircleRadius;
         Gizmos.DrawWireSphere(originPoint.position, outerCircleRadius);
+        Gizmos.DrawWireSphere(originPoint.position, innerCircleRadius);
     }
 }
