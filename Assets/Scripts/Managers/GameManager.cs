@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject scoreText;
     public GameObject gameOverText;
     public bool gameOver;
-
+    public GameObject[] powerUps;
+    
     private int score;
 
     private void Awake()
@@ -28,6 +29,12 @@ public class GameManager : MonoBehaviour
     {
         gameOverText.SetActive(true);
         gameOver = true;
+    }
+
+    public void SpawnPowerUp(Transform location, int index)
+    {
+        var powerUp = Instantiate(powerUps[index], location);
+        powerUp.transform.position = location.position;
     }
     
     private void Start()

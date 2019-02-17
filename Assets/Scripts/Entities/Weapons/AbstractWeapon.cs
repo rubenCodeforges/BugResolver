@@ -7,5 +7,6 @@ namespace DefaultNamespace
         public int damage;
         public AudioClip shootSound;
         public float shootVolume = 1f;
+        protected MainGun MainGun;
     }
 }

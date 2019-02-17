@@ -12,6 +12,7 @@ public class EnemySpawnManager : MonoBehaviour
     public Wave[] waves;
     public float timeBetweenWaves = 5f;
     public GameManager GameManager;
+    public Transform[] PowerUpSpawnPoints;
     
     private int nextWave = 0;
     private float waveCountdown;
@@ -92,6 +93,10 @@ public class EnemySpawnManager : MonoBehaviour
         else
         {
             nextWave++;
+            if (nextWave == 2)
+            {
+                GameManager.SpawnPowerUp(PowerUpSpawnPoints[0], 0);
+            }
         }
     }
 

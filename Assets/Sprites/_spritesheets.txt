@@ -1,2 +1,5 @@
 Turret_Base_64_Hit.png,64,64,4
 Bug_suicide_1.png,32,32,7
+M_Gun_shoot_anim.png,64,64,3
+M_Gun_2_shoot_anim.png,64,64,3
+Chute.png,64,64,4
